@@ -77,3 +77,45 @@ function dowhile() {
     while(i <=5)  //condition
 }
 //dowhile();
+
+
+
+//STUDENT MARKS WITH CONSTRUCTOR FUNCTION
+let marks = [40,50,64,82, 69,60]    //marks user input
+
+function Student(name, total, result,  percentage) {
+
+    this.name = name,   
+    this.total = total,
+    this.result = result,
+    this.percentage = percentage
+  
+}
+let totalmarks = marks.reduce((prev, current) => prev + current);
+let percentage =  Math.round((totalmarks / 600) * 100) + '%';
+ let result = marks.some(m => m < 35);
+ result ? result  = 'fail' : result = 'pass'
+
+
+
+let  student1 = new Student('Sadashiv', totalmarks, result, percentage)
+//console.log(student1)
+//STUDENT MARKS WITH CONSTRUCTOR FUNCTION
+
+
+
+//MUTABLE IMMUTABLE EXAMPLE (mutable = object, imutable = primitive data )
+
+let mylist = [4,6,8]
+
+newlist = [...mylist]
+mylist.pop();
+console.log(mylist);
+console.log(newlist);
+
+
+
+
+
+
+
