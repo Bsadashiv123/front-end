@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .color-success {
+            color: #2ecc71;
+        }
+        .color-danger {
+            color: #e74c3c;
+
+        }
+        /* Add your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Add your header content here -->
+    </header>
+    <h1>Page</h1>
+
+    <main>
+        <section>
+            <h2 id="increment-output">0</h2>
+            <button class="increment-button">increment</button>
+        </section>
+
+        <section>
+            <h2>Alarm</h2>
+
+
+            <div>
+                <label for="">Time Now: </label>
+                <span id="showTime"></span>
+            </div>
+
+            <div>
+                <label for="">Alarm Set Time:</label>
+                <input type="time" id="timeInput">
+                <button class="alarm-button">Set Alarm</button>
+
+
+            </div>
+
+            <div>
+                <label for="">your Alarm Set to:</label>
+                <span class="" id="alarmSetPrint"></span>
+                <div class="color-success" id="alarmMsg"></div>
+            </div>
+
+
+
+        </section>
+
+        <!-- Add your main content here -->
+    </main>
+
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+
+    <script>
+        //INCREMENT CODE STARTS HERE
+        let outputElement = document.getElementById('increment-output')
+        let element = document.querySelector('.increment-button');
+        let count = 0;
+        element.addEventListener('click', function () {
+
+            outputElement.innerHTML = ++count;
+
+
+        });
+        //INCREMENT CODE END HERE
+
+
+
+         /////ALARM CODE STARTS HERE///////
+        let timeElement = document.getElementById('timeInput');
+        let alartmTime;
+        let saveAlarm;
+        timeElement.addEventListener('change', function () {
+            alartmTime = timeElement.value;
+        });
+        let savealarmPrint = document.getElementById('alarmSetPrint');
+        let showMesg = document.getElementById('alarmMsg');
+        let alarmButton = document.querySelector('.alarm-button');
+        alarmButton.addEventListener('click', function () {
+            saveAlarm = alartmTime;
+
+            if(saveAlarm == undefined) {
+                savealarmPrint.innerHTML = 'please select time';
+            }
+            else {
+                savealarmPrint.innerHTML = saveAlarm;
+               
+            }
+        })
+
+
+        setInterval(() => {
+            let date = new Date();
+            let hour = date.getHours()
+            let minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+            console.log(minute);
+            let second = date.getSeconds();
+            let showTimeElement = document.getElementById('showTime');
+            showTimeElement.innerHTML = `${hour}: ${minute}: ${second}`
+            let currentTime = `${hour}:${minute}`;
+
+            if (currentTime == saveAlarm) {
+                showMesg.innerHTML = `alarm is coming`;
+ 
+            }
+
+            else if (currentTime > saveAlarm){
+                savealarmPrint.innerHTML = `you have selected past time`;
+                savealarmPrint.classList.add('color-danger');
+            }
+            else {
+                savealarmPrint.classList.remove('color-danger')
+            }
+
+
+        }, 1000);
+
+         //////ALARM CODE END HERE/////////
+
+    </script>
+</body>
+
+</html>

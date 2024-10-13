@@ -16,9 +16,6 @@ let result = marks.some(m => m < 35);
  result ? result  = 'fail' : result = 'pass'
 let grade;
 
-
-
-
 if(percentage > 90) grade = 'A+'
 else if(result  == 'fail') grade = 'no grade provided for fail students';
 else if(percentage > 80) grade = 'A'

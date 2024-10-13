@@ -25,5 +25,12 @@ function getbmi(weight, height) {
     else console.log('obesity');
 }
 
-getbmi(55, 165)
+//getbmi(55, 165)
 //END BMI CALCULATOR
+
+console.log(gaurik)
+
+//SORTING AND FILTERING
+
+
+
