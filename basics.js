@@ -128,6 +128,23 @@ myarr2[4].other.push('eight');
 //myarr2.push('five')
 
 
+//CALLBACK FUNCTION EXAMPLE
+function hbd(name) {
+    console.log("Happy Birthday " + name);
+}
+
+function achieve(name) {
+    console.log("Congratulations " + name);
+}
+
+function marry(name) {
+    console.log("Happy Married Life " + name);
+}
+
+function wishes(name, wishtype) {
+    wishtype(name)
+}
+//wishes('Shanvika', achieve)
 
 
 

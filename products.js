@@ -33,23 +33,33 @@ function getresult(a, b, operation) {
 //getresult(10, 20, add);
 
 
-//CALLBACK FUNCTION EXAMPLE
-function hbd(name) {
-    console.log("Happy Birthday " + name);
-}
+let arraylist = ['one', 'two', 'three', 'four']
 
-function achieve(name) {
-    console.log("Congratulations " + name);
-}
 
-function marry(name) {
-    console.log("Happy Married Life " + name);
-}
+console.log(arraylist);
 
-function wishes(name, wishtype) {
-    wishtype(name)
-}
-//wishes('Shanvika', achieve)
+// function pushit(items, itemname) {
+//    items.push(itemname)
+
+// }
+
+// function popit(items, itemname) {
+//    items.pop(itemname)
+// }
+// function shiftit(items, itemname) {
+//    items.pop(itemname)
+// }
+// function unshift(items, itemname) {
+//    items.pop(itemname)
+// }
+
+// function showitems(numbers, cback, itemname) {
+//    cback(numbers, itemname);
+//    console.log(numbers);
+// }
+
+
+// showitems(arraylist, pushit, 'three')
 
 
 
