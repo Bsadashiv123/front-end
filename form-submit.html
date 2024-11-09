@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <style>
+        .color-success {
+            color: #2ecc71;
+        }
+        .color-danger {
+            color: #e74c3c;
+
+        }
+        /* Add your CSS styles here */
+    </style>
+</head>
+
+<body>
+
+    <header><h1>Welcome</h1></header>
+    <main>
+        <section><h2>Register</h2>
+        <div class="section-content">
+            <form action="" id="registerForm">
+                <div>
+                    <label for="firstname">firstname:</label>
+                        <input name="firstname" type="text" id="firstname">
+                </div>
+
+                <div>
+                    <label for="lastname">lastname:</label>
+                    <input name="lastname" type="text" id="lastname">
+
+                </div>
+
+                <div>
+                    <label for="email">email:</label>
+                    <input  name="email" type="email" id="email">
+
+                    
+                </div>
+
+                <div>
+                    <label for="mobile">mobile:</label>
+                    <input name="mobile" type="tel" id="phone">
+                    
+                </div>
+
+                <div>
+                    <label ></label>
+
+                    <label  for="gender">Male</label>
+                    <input  name="gender" value="MALE" type="radio" id="male">
+                   
+
+                    <label for="female">Female</label>
+                    <input name="gender" value="Female" type="radio" id="female">
+
+                    <label for="other">Other</label>
+                    <input name="gender" value="other" type="radio" id="other">
+                    
+                </div>
+
+                <div>
+                    <label for="address">Address</label>
+                    <textarea name="address" id="address" name=""  cols="30" rows="10"></textarea>
+                </div>
+
+                <div>
+                    <label for="city">city</label>
+                    <select name="city" id="city">
+                        <option value="hyderabad">Hyderabad</option>
+                        <option value="secunderabad">Secunderabad</option>
+                        <option value="district">District</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+                
+                
+            </form>
+
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>City</th>
+                </tr>
+
+
+            </table>
+        </div>
+        </section>
+
+
+      
+    </main>
+  
+
+    <script>
+
+        localStorage.setItem('user',  []);
+
+
+        document.getElementById('registerForm').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            let customerObj = {
+                name:  document.getElementById('firstname').value + document.getElementById('lastname').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                //gender: document.getElementById('make').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value
+
+
+            }
+
+
+            localStorage.setItem('user'.push('one'));
+            console.log(customerObj);
+            
+        })
+  
+        
+        
+  
+  </script>
+</body>
+
+</html>

@@ -1,65 +1,61 @@
 
-//let products = [];
-fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then((json)=> {
-                products = json;
-                for(let product of products) {
-                   
-                   //console.log(product);
-                    
-                }
-               
-                
-            })
+async function getapidata(url) {
+  
+        let response = await fetch(url);
+        let data = await  response.json();
+        console.log(response.status);
 
+};
 
-function add(a, b, callback) {
-   let result =  a + b;
-   callback(result)
-    
+let url = `https://fakestoreapi.com/products`;
+
+//getapidata(url)
+let members = {
+    member1: {
+        name: 'sadashiv',
+        age: 34,
+    },
+    member2: {
+        name: 'sarika',
+        age: 33,
+    },
+    member3: {
+        name: 'shanvika',
+        age: 34,
+    },
+    member4: {
+        name: 'shruthika',
+        age: 2,
+    }
 }
 
 
-function getresult(a, b, operation) {
-     operation(a, b, function(result) {
-        console.log(result);
 
-     })
-   
-}
-
-
-//getresult(10, 20, add);
-
-
-let arraylist = ['one', 'two', 'three', 'four']
-
-
-console.log(arraylist);
-
-// function pushit(items, itemname) {
-//    items.push(itemname)
-
+//select an object from list of objects
+// for(let member in members) {
+//     let my = members[member];
+//     if(members[member].name === 'sarika') {
+//        // console.log(my);
+//     }
 // }
 
-// function popit(items, itemname) {
-//    items.pop(itemname)
-// }
-// function shiftit(items, itemname) {
-//    items.pop(itemname)
-// }
-// function unshift(items, itemname) {
-//    items.pop(itemname)
-// }
+// let numbers = [1,2,3,4,5,6,7,8,9]
 
-// function showitems(numbers, cback, itemname) {
-//    cback(numbers, itemname);
-//    console.log(numbers);
-// }
+// numbers = numbers.map(number => {
+//     return number = ' iam number'
+  
+// })
+
+//console.log(numbers);
 
 
-// showitems(arraylist, pushit, 'three')
+let numbers1 = [1,2,3,4, 5, 6, 7, 8]
 
+// numbers1.forEach(function(num) {
+//     console.log(num);
+// });
 
+let newnumber = numbers1.map(function(num) { return num * 2})
+.filter(function(num) { return num < 10})
 
+console.log(newnumber);

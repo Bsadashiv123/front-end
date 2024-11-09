@@ -150,6 +150,31 @@ function wishes(name, wishtype) {
 
 
 
+class Employees {
+    constructor(name, age, salary, behaviour) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        this.behaviour = behaviour;
+        
+       
+    }
+
+    knowbehaviour() {
+        console.log(`${this.name} is a ${this.behaviour} guy`);
+    }
+
+}
+
+// function Employees (name, age, salary, behaviour) {
+//     this.name = name;
+//     this.age = age;
+//     this.salary = salary;
+//     this.behaviour = behaviour;
+//     this.knowbehaviour = function knowbehaviour () {
+//         console.log(`${this.name} is a ${this.behaviour} guy`);
+//     }
+// }
 
 
 
@@ -159,6 +184,126 @@ function wishes(name, wishtype) {
 
 
 
+// console.log(emp1);
 
+let emp1 = new Employees ('sadashiv', 34,  50000, 'good');
+let emp2 = new Employees ('shanvika', 5,  5000, 'ok');
+
+
+//.knowbehaviour()
+
+
+
+let calcAvgTeam = (round1, round2, round3) => {
+    let total = round1 + round2 + round3;
+    return  total / 3;
+
+
+}
+
+
+let apteam = calcAvgTeam(45,6,78)
+let tsteam = calcAvgTeam(133,116,78)
+
+
+let checkResult = (apteam, tsteam) => {
+
+    if(apteam >= 2 * tsteam) {
+        console.log('apteam won ' +  apteam);
+
+    }
+
+    else if (tsteam >= apteam * 2) {
+        console.log('tsteam won ' + tsteam);
+    } 
+
+    else {
+        console.log('no one won');
+    }
+}
+console.log(apteam, tsteam);
+
+checkResult(apteam, tsteam)
+
+
+
+//CLASS concepts (USED CLASES TO CREAE OBJECTS)
+
+class Festival {
+    constructor(name, god) {
+        this.name = name;
+        this.god = god;
+    }
+
+    greetings() {
+        console.log(`we are celebrating ${this.name} and pray to ${this.god}`);
+    }
+}
+
+let diwali = new Festival('diwali', 'lakshmi devi')
+let chavithi = new Festival('chavithi', 'ganesh')
+
+console.log(diwali, chavithi);
+
+//END CLASS concepts (USED CLASES TO CREAE OBJECTS)
+
+
+
+
+////////////// START CHECK ARRAY SAME OR NOT EXAMPLE //////////////
+let str1 = 'one'
+let str2 = 'one'
+
+// console.log(arr1 === arr2);
+// console.log(str1 === str2);
+
+function checkArray(arr1, arr2) {
+    if(arr1.length === arr2.length) {
+        return false
+    }
+
+    for (let  i = 0; i < arr1.length; i++) {
+        if(arr1[i] === arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+let arr1 = ['one', 'two']
+let  arr2 = ['one', 'two']
+
+//console.log(checkArray(arr1, arr2));
+
+////////////// END CHECK ARRAY SAME OR NOT EXAMPLE //////////////
+
+
+
+////////////// START KEYWORD IN CLASS  //////////////
+class  Person {
+    static iamstaticname = 'static person';
+
+    static  greet() {
+        console.log('hello good morning');
+    }
+
+
+    constructor(name) {
+        this.name = name
+    }
+
+    getpersonname() {
+        console.log(this.name);
+    }
+}
+
+let user1 = new Person('sadashiv')
+// console.log(user1.name);  //sadashiv
+// console.log(user1.greet);  //undefined
+// console.log(Person.iamstaticname);  //static person
+//Person.greet();  //static person
+
+////////////// END KEYWORD IN CLASS  //////////////
 
 

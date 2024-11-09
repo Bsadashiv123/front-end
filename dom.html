@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+
+</head>
+<style>
+    ul {
+        list-style-type: none;
+    }
+
+    .active {
+        color: white;
+        background-color: green;
+        border-radius: 0.5rem;
+        display: inline-block;
+        padding: 3px 6px;
+    }
+</style>
+
+<body>
+
+    <div>sadashiv <b>bachuwar</b></div>
+
+
+
+    <div id="showState"></div>
+
+
+    <select name="" id="">
+
+    </select>
+
+    <script>
+        let body = document.getElementsByTagName('body')[0];
+        let h1 = document.createElement('h1');
+        let main = document.createElement('main')
+        let ul = document.createElement('ul');
+        let div = document.getElementsByTagName('div');
+
+        body.appendChild(main);
+        main.appendChild(h1);
+        main.appendChild(ul);
+        h1.innerHTML = 'DOM MANIPULATION'
+       
+
+        let date = new Date();
+        let day = date.getDay();
+
+        let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thrusday', 'friday', 'saturday']
+
+        for (let index = 0; index <=6; index++) {
+
+
+            let li = document.createElement('li');
+                ul.appendChild(li);
+                li.innerHTML = days[index];
+                li.setAttribute('aria-label', days[index]);
+                li.addEventListener('click', function(e) {
+                    alert(this.innerHTML)
+                    console.log(e.target.ariaLabel)
+                })
+                 index === day ?  li.classList.add('active') : '';
+
+
+
+
+
+
+        }
+
+
+        
+
+
+       
+       
+       
+        let states = {
+        telangana: {
+        capital: 'Hyderabad',
+        population: 3.52e7,
+        area: 1.12e5,
+        districts: 31
+    },
+    andhraPradesh: {
+        capital: 'Amaravati',
+        population: 5.29e7,
+        area: 1.60e5,
+        districts: 26
+    },
+    arunachalPradesh: {
+        capital: 'Itanagar',
+        population: 1.38e6,
+        area: 8.37e4,
+        districts: 25
+    },
+    assam: {
+        capital: 'Dispur',
+        population: 3.12e7,
+        area: 7.84e4,
+        districts: 33
+    },
+    bihar: {
+        capital: 'Patna',
+        population: 1.04e8,
+        area: 9.42e4,
+        districts: 38
+    },
+    chhattisgarh: {
+        capital: 'Raipur',
+        population: 2.55e7,
+        area: 1.35e5,
+        districts: 28
+    },
+    goa: {
+        capital: 'Panaji',
+        population: 1.46e6,
+        area: 3.70e3,
+        districts: 2
+    },
+    gujarat: {
+        capital: 'Gandhinagar',
+        population: 6.04e7,
+        area: 1.96e5,
+        districts: 33
+    },
+    haryana: {
+        capital: 'Chandigarh',
+        population: 2.54e7,
+        area: 4.42e4,
+        districts: 22
+    },
+    himachalPradesh: {
+        capital: 'Shimla',
+        population: 6.86e6,
+        area: 5.57e4,
+        districts: 12
+    },
+    jharkhand: {
+        capital: 'Ranchi',
+        population: 3.30e7,
+        area: 7.97e4,
+        districts: 24
+    },
+    karnataka: {
+        capital: 'Bengaluru',
+        population: 6.11e7,
+        area: 1.92e5,
+        districts: 30
+    },
+    kerala: {
+        capital: 'Thiruvananthapuram',
+        population: 3.34e7,
+        area: 3.89e4,
+        districts: 14
+    },
+    madhyaPradesh: {
+        capital: 'Bhopal',
+        population: 7.26e7,
+        area: 3.08e5,
+        districts: 52
+    },
+    maharashtra: {
+        capital: 'Mumbai',
+        population: 1.12e8,
+        area: 3.07e5,
+        districts: 36
+    },
+    manipur: {
+        capital: 'Imphal',
+        population: 2.88e7,
+        area: 2.23e4,
+        districts: 16
+    },
+    meghalaya: {
+        capital: 'Shillong',
+        population: 2.97e6,
+        area: 2.24e4,
+        districts: 11
+    },
+    mizoram: {
+        capital: 'Aizawl',
+        population: 1.10e6,
+        area: 2.11e4,
+        districts: 11
+    },
+    nagaland: {
+        capital: 'Kohima',
+        population: 1.98e6,
+        area: 1.66e4,
+        districts: 11
+    },
+    odisha: {
+        capital: 'Bhubaneswar',
+        population: 4.19e7,
+        area: 1.56e5,
+        districts: 30
+    },
+    punjab: {
+        capital: 'Chandigarh',
+        population: 2.77e7,
+        area: 5.04e4,
+        districts: 22
+    },
+    rajasthan: {
+        capital: 'Jaipur',
+        population: 6.85e7,
+        area: 3.42e5,
+        districts: 33
+    },
+    sikkim: {
+        capital: 'Gangtok',
+        population: 610577,
+        area: 7096,
+        districts: 4
+    },
+    tamilNadu: {
+        capital: 'Chennai',
+        population: 7.21e7,
+        area: 1.30e5,
+        districts: 38
+    }
+}
+
+    
+       
+
+
+        
+        let select = document.getElementsByTagName('select')[0];
+        let showStateDetails = document.getElementById('showState');
+
+ 
+        let currentState;
+        select.addEventListener('change', function() {
+
+           currentState  = select.value;
+
+
+           for(let state in states) {
+
+            if(currentState == state) {
+                currentState = states[state];
+
+                let {capital, population, area, districts} = {...currentState}
+                
+                    showStateDetails.innerHTML = JSON.stringify(currentState) 
+                
+
+            }
+           
+               
+           }
+            
+
+            })
+
+
+
+
+          for(let state in states) {
+            debugger;
+            let option = document.createElement('option');
+            select.appendChild(option)
+            option.innerHTML = state;
+            option.value = state;
+
+
+            
+
+            
+          
+
+           
+
+        }
+
+
+       
+      
+        
+       
+
+     
+    </script>
+
+
+</body>
+
+</html>

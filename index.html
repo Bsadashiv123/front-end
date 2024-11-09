@@ -13,6 +13,21 @@
             color: #e74c3c;
 
         }
+
+        .col {
+            background-color: gray;
+            width: 100%;
+            border: 1px solid blue;
+            
+        }
+
+        .action {
+            background-color: blueviolet;
+            padding: 5px;
+            display: inline-block;
+            position: absolute;
+            transform: translateY(-100%);
+        }
         /* Add your CSS styles here */
     </style>
 </head>
@@ -22,8 +37,38 @@
         <!-- Add your header content here -->
     </header>
     <h1>Page</h1>
-
+    
     <main>
+
+
+        <div class="action">element action</div>
+
+        <table border="0" width="50%">
+
+            <thead>
+                <tr>
+                    <th rowspan="3">
+                        <div class="col" style="height: 100%">row span</div>
+                    </th>
+                    
+                </tr>
+
+                <tr>
+                    <th colspan="2">
+                        <div class="col">column 1</div>
+                        </th>
+
+                    <th><div class="col mydiv">column 2</div></th>
+                    
+                </tr>
+                <tr>
+                    <th colspan="2">column 1</th>
+
+                    <th>column 2</th>
+                    
+                </tr>
+            </thead>
+        </table>
         <section>
             <h2 id="increment-output">0</h2>
             <button class="increment-button">increment</button>
@@ -56,6 +101,23 @@
 
         </section>
 
+
+        <section>
+            <h2>Calculator</h2>
+
+            <input type="text" id="num1" placeholder="First Number">
+            <input type="text" id="num2" placeholder="Second Number">
+            <div>
+                <button class="calc-button" data-operation="add">+</button>
+                <button class="calc-button" data-operation="subtract">-</button>
+                <button class="calc-button" data-operation="multiply">*</button>
+                <button class="calc-button" data-operation="divide">/</button>
+            </div>
+            <h3>Result: <span id="result">0</span></h3>
+        
+
+        </section>
+
         <!-- Add your main content here -->
     </main>
 
@@ -64,6 +126,18 @@
     </footer>
 
     <script>
+
+        let th = document.querySelector('.mydiv');
+        let rect = th.getBoundingClientRect();  // get the x and y of th
+
+        let action = document.querySelector('.action')
+        
+        action.style.left = rect.left + 'px';   // defining x and y to  the action div
+        action.style.top = rect.top + 'px';  // defining x and y to  the action div
+        
+
+    
+        //alert(`${rect.left} and ${rect.top}`);
         //INCREMENT CODE STARTS HERE
        
         let outputElement = document.getElementById('increment-output')
@@ -129,6 +203,57 @@
         }, 1000);
 
          //////ALARM CODE END HERE/////////
+
+
+
+
+
+    //////////////////CALCULATOR STARTS HERE/////////
+           let btn = document.querySelectorAll('.calc-button');
+        let resultElement = document.getElementById('result');
+       
+
+        let result; 
+        btn.forEach((button)=> {
+            button.addEventListener('click', function() {
+                 let field1 = parseFloat(document.getElementById('num1').value);
+                 let field2 = parseFloat(document.getElementById('num2').value);
+                let operation = this.getAttribute('data-operation');
+             
+                 switch (operation) {
+                    case 'add':
+                        result = field1 + field2;
+                        
+                        break;
+                        case 'subtract':
+                        result = field1 - field2;
+                        break;
+
+                        case 'multiply':
+                        result = field1 * field2;
+                        break;
+                        
+                        case 'devide':
+                        result = field1 / field2;
+                        break;
+
+                        default: 'wrong calculation'
+
+                 }
+
+                 resultElement.innerHTML = result;
+                 
+            })
+           
+
+        })
+
+ //////////////////CALCULATOR ENDS HERE/////////
+
+
+
+
+
 
     </script>
 </body>
