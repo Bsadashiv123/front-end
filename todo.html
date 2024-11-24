@@ -15,12 +15,10 @@
             <form action="index.html" method="post" id="to_do_form">
                 <label for="todo" id="main_label">Add a new task to your list (required)</label>
                 <div>
-                    <input type="text" class="task_input" aria-describedby="example" id="todo">
+                    <input required type="text" class="task_input" aria-describedby="example" id="todo">
                     <input type="submit" value="Add" class="add_task">
                 </div>
-                <div class="example" id="example">
-                    Example: Feed The Chicken
-                </div>
+               
             </form>
             <ul id="list" class="list">
             </ul>
@@ -39,28 +37,68 @@
     let list = document.getElementById('list');
     let feedbackMsg = document.getElementById('sc_feedback');
 
+    feedbackType = {
+        add: 'added',
+        remove: 'removed',
+        update: 'updated',
+    }
+
+    class Tasks {
+        constructor(taskname, id) {
+            this.taskname = taskname,    
+            this.id = id
+        }
+
+    }
+
+    let taskarray = []
     
 
+    
+   
+
+    let {add, remove, update} = feedbackType  //feedback types
+
+ 
+
+  
+    // START FORM SUBMIT FUNCTION    
     toDoForm.addEventListener('submit', function(e) {
         e.preventDefault();
         let task = toDoInput.value; 
 
-        addToDom(task)
-        
-  
-       feedback(task)
+       
+
+          addToDom(task)
+        focusTo(toDoInput)
+        removeText(toDoInput)
+        feedback(task, add)
+
       
-       
-       
+      
 
     })
 
+    // END FORM SUBMIT FUNCTION   
+
+
 
     function addToDom (task) {
+        let newid = generateId();
+        let taskItem = createElement('li', null, list, ['class', 'listitem'])
        
-        let taskItem = createElement('li', task, list, ['class', 'listitem'])
-        let checkbox = createElement('input', '', taskItem, ['type', 'checkbox'])
+        let checkbox = createElement('input', null, taskItem, ['type', 'checkbox'])
+        let label = createElement('label', task, taskItem, ['for', newid])
         let button = createElement('button', 'Delete', taskItem, ['class', 'delete_task'])
+
+       
+        checkbox.setAttribute('id', newid)
+
+    
+        generateArray(task, newid)
+
+
+        
        
     }
 
@@ -80,26 +118,69 @@
         return node;
     }
 
+    list.addEventListener('click', function(e) {
+        let currentButton = e.target;
+
+      
+        if(currentButton.classList.contains('delete_task')) {
+            let li = currentButton.closest('li');
+            let taskName = currentButton.previousElementSibling.textContent
+
+            
+            list.removeChild(li)
+            feedback(taskName, remove)
+            
 
 
+            
+        }
 
-    function feedback(task) {
-        feedbackMsg.textContent = `you have been added ${task}`
+       
+        
+            
+
+        
+
+        
+    })
+
+    function feedback(task, action) {
+        feedbackMsg.textContent = `you have been ${action} ${task}`
 
     }
+    
     function clearMsg(task) {
         task = ''
 
     }
 
+    function generateId() {
+        let prefix = 'task_item'
+        let tasklist = document.querySelectorAll('ul li');
+        return prefix + tasklist.length
+    }
+
+    function focusTo(element) {
+        element.focus()
+
+    }
+
+    function removeText(element) {
+        element.value = ''
+
+    }
 
 
+    function generateArray(task, newid) {
+        let taskitem = new Tasks(task, newid);
+        taskarray.push(taskitem)
+        console.log(taskarray);
+  
+
+    }
 
 
-
-
-
-    // </script>
+     </script>
 
 
 
@@ -203,7 +284,7 @@
 
         /*
         We want the checkbox to go before the label,
-        so we need to connect the labels to the inputs
+        so we need to connect the labels to the inpuCVts
         with IDs. 
         */
         function generateID() {
