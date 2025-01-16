@@ -31,4 +31,3 @@ else  grade = '--'
 let  student1 = new Student('Sadashiv', totalmarks, result, percentage, grade)
 console.log(student1)
 //STUDENT MARKS WITH CONSTRUCTOR FUNCTION
-

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Builder</title>
+    <!-- Bootstrap 5 CSS -->
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+   
+</head>
+
+<body>
+    <!-- Container-fluid -->
+    <div class="container">
+        <div id="heroWrapper" class="display-4"><div class="display-4">Wecome</div>
+                        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p></div>
+
+
+        <!-- Your content goes here -->
+        <div id="row1" class="row">
+
+
+        </div>
+        
+    </div>
+
+    <script>
+        let row = document.getElementById('row1');
+        let div = document.createElement('div');
+        let card = document.createElement('div');
+
+        
+
+        row.appendChild(div)
+
+        div.setAttribute('class', 'col-md-12');
+
+
+        // function loadHeroSection() {
+        //     return new Promise((resolve, reject) => {
+
+        //         setTimeout(() => {
+        //             const link = document.createElement('link');
+        //             link.rel = 'stylesheet';
+        //             link.href = `https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css`
+                    
+        //             resolve(link)
+
+        //         }, 2000);
+
+        //     })
+        // }
+
+        // loadHeroSection().then((link)=> {
+        //     document.head.appendChild(link)
+
+        // })
+        // .catch((err) => {
+        //    document.getElementById('heroWrapper').innerHTML = err;
+           
+
+
+        // })
+     
+
+            function greetings() {
+                return new Promise((res, rej) => {
+
+                })
+            }
+
+            greetings().then((response)=> {
+                document.getElementById('heroWrapper').innerHTML = response;
+
+              
+                
+                
+
+            }).catch((err) => {
+                document.getElementById('heroWrapper').innerHTML = err;
+            })
+
+
+
+            function getuserdetails() {
+             
+                return new Promise((resolve, reject)=>{
+
+                    setTimeout(() => {
+                        fetch('https://jsonplaceholder.typicode.com/todos')
+                        .then((response)=>{
+                            response.json();
+
+                        })
+                        .then((data)=>{
+                            resolve(data)
+                        })
+                        
+                    }, 5000);
+                    
+          
+                })
+            }
+
+            getuserdetails()
+            .then((value)=>{
+                console.log(value);
+            })
+            .catch((err)=>{console.log(err)})
+
+
+
+
+        
+    </script>
+
+    <!-- Bootstrap 5 JS (Optional, if you need Bootstrap's JavaScript features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <title>Accessible to do list</title>
+
+    <style>
+        #productTable tbody tr td img {
+            width: 80px;
+            height: auto;
+        }
+
+        .btn {
+            border: none;
+            background-color: blueviolet;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,6 +44,34 @@
         </div>
     </div>
 
+
+
+    <div class="products-container">
+        <table id="productTable" border="1" cellpadding="5" cellspacing="5" width="50%">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Action</th>
+              
+
+            </thead>
+
+            <tbody id="productBody">
+
+
+            </tbody>
+            
+        </table>
+        <div class="view-product-container">
+
+        </div>
+    </div>
+
+    <script src="products.js"></script>
     <script>
 
 
@@ -69,7 +113,7 @@
 
        
 
-          addToDom(task)
+        addToDom(task)
         focusTo(toDoInput)
         removeText(toDoInput)
         feedback(task, add)
@@ -78,46 +122,9 @@
       
 
     })
-
     // END FORM SUBMIT FUNCTION   
 
-
-
-    function addToDom (task) {
-        let newid = generateId();
-        let taskItem = createElement('li', null, list, ['class', 'listitem'])
-       
-        let checkbox = createElement('input', null, taskItem, ['type', 'checkbox'])
-        let label = createElement('label', task, taskItem, ['for', newid])
-        let button = createElement('button', 'Delete', taskItem, ['class', 'delete_task'])
-
-       
-        checkbox.setAttribute('id', newid)
-
-    
-        generateArray(task, newid)
-
-
-        
-       
-    }
-
-
-    function createElement(element, text, wrapper, attr = null) {
-        let node = document.createElement(element)
-       // node.textContent = text;
-        if(text !=null) {
-            let customtext = document.createTextNode(text)
-
-            node.appendChild(customtext)
-        }
-        wrapper.appendChild(node)
-
-        node.setAttribute(...attr)
-
-        return node;
-    }
-
+    //START DELETE BUTTON FUNCTIONALITY
     list.addEventListener('click', function(e) {
         let currentButton = e.target;
 
@@ -143,41 +150,73 @@
 
         
     })
+    //END DELETE BUTTON FUNCIONALITY
 
-    function feedback(task, action) {
-        feedbackMsg.textContent = `you have been ${action} ${task}`
 
-    }
+    //OTHER FUNCTIONS
+
+        function addToDom (task) {
+            let newid = generateId();
+            let taskItem = createElement('li', null, list, ['class', 'listitem'])
+        
+            let checkbox = createElement('input', null, taskItem, ['type', 'checkbox'])
+            let label = createElement('label', task, taskItem, ['for', newid])
+            let button = createElement('button', 'Delete', taskItem, ['class', 'delete_task'])
+
+        
+            checkbox.setAttribute('id', newid)
+             generateArray(task, newid)
+
+ 
+        }
+
+        function createElement(element, text, wrapper, attr = null) {
+            let node = document.createElement(element)
+        // node.textContent = text;
+            if(text !=null) {
+                let customtext = document.createTextNode(text)
+
+                node.appendChild(customtext)
+            }
+            wrapper.appendChild(node)
+
+            node.setAttribute(...attr)
+
+            return node;
+        }
     
-    function clearMsg(task) {
-        task = ''
+        function feedback(task, action) {
+            feedbackMsg.textContent = `you have been ${action} ${task}`
 
-    }
+        }
+        
+      
+        function generateId() {
+            let prefix = 'task_item'
+            let tasklist = document.querySelectorAll('ul li');
+            return prefix + tasklist.length
+        }
 
-    function generateId() {
-        let prefix = 'task_item'
-        let tasklist = document.querySelectorAll('ul li');
-        return prefix + tasklist.length
-    }
+        function focusTo(element) {
+            element.focus()
 
-    function focusTo(element) {
-        element.focus()
+        }
 
-    }
+        function removeText(element) {
+            element.value = ''
 
-    function removeText(element) {
-        element.value = ''
+        }
 
-    }
+        function generateArray(task, newid) {
+            let taskitem = new Tasks(task, newid);
+            taskarray.push(taskitem)
+            console.log(taskarray);
+    
 
+        }
 
-    function generateArray(task, newid) {
-        let taskitem = new Tasks(task, newid);
-        taskarray.push(taskitem)
-        console.log(taskarray);
-  
+  //OTHER FUNCTIONS
 
-    }
 
 
      </script>
